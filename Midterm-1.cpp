@@ -20,28 +20,30 @@ private: //this is a function defined only for this class
     Node* tail;
 
 public: //this function can be called upon outside of this class 
-    DoublyLinkedList() {
+    DoublyLinkedList() { //this here again is a constructor 
+        //assigning head and tail to nullptr means they they are empty
         head = nullptr;
         tail = nullptr;
     }
-
+//this function is to insert values after a position as written in the name and the parameters
+//also, every return statement in here will result in leaving the function
     void insert_after(int value, int position) {
-        if (position < 0) {
-            cout << "Position must be >= 0." << endl;
+        if (position < 0) { //if the position is less then zero
+            cout << "Position must be >= 0." << endl; //this will be the output
             return;
         }
-
+        //this uses heap, and it is used to create new nodes
         Node* newNode = new Node(value);
-        if (!head) {
-            head = tail = newNode;
+        if (!head) { //if head is empty
+            head = tail = newNode; //head is equal to tail and both of these become the new node
             return;
         }
 
-        Node* temp = head;
-        for (int i = 0; i < position && temp; ++i)
+        Node* temp = head; //a new pointer is created and it is made to point the value pointer head
+        for (int i = 0; i < position && temp; ++i) //for ever i, starting from 0, greater then position and temp, is increased by one, temp is pointing going to be pointing to the next node which is also known as traversing
             temp = temp->next;
 
-        if (!temp) {
+        if (!temp) { //if temp is 
             cout << "Position exceeds list size. Node not inserted.\n";
             delete newNode;
             return;

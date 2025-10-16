@@ -1,25 +1,25 @@
 #include <iostream>
 using namespace std;
 
-const int MIN_NR = 10, MAX_NR = 99, MIN_LS = 5, MAX_LS = 20;
+const int MIN_NR = 10, MAX_NR = 99, MIN_LS = 5, MAX_LS = 20; //these are constants, which we can call back and they are fixed
 
 class DoublyLinkedList {
-private:
-    struct Node {
-        int data;
-        Node* prev;
-        Node* next;
-        Node(int val, Node* p = nullptr, Node* n = nullptr) {
-            data = val;
-            prev = p;
+private: //this is a function defined only for this class
+    struct Node { //this is where variables are grouped for 
+        int data; //this means data is an integer
+        Node* prev; //this is a pointer to prev which is the previous node
+        Node* next; //here, next means the next node
+        Node(int val, Node* p = nullptr, Node* n = nullptr) { //this is a constructor which is used to set initial values and these are parameters
+            data = val; 
+            prev = p; 
             next = n;
         }
     };
-
+//again here, head and tail means it points to head and tail, which is first and last
     Node* head;
     Node* tail;
 
-public:
+public: //this function can be called upon outside of this class 
     DoublyLinkedList() {
         head = nullptr;
         tail = nullptr;

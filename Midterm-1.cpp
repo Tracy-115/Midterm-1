@@ -43,27 +43,27 @@ public: //this function can be called upon outside of this class
         for (int i = 0; i < position && temp; ++i) //for ever i, starting from 0, greater then position and temp, is increased by one, temp is pointing going to be pointing to the next node which is also known as traversing
             temp = temp->next;
 
-        if (!temp) { //if temp is 
+        if (!temp) { //if we are at the end of temp, the text below will be outputted and the node will be deleted this is to clean up or freeing the memory 
             cout << "Position exceeds list size. Node not inserted.\n";
             delete newNode;
             return;
         }
 
-        newNode->next = temp->next;
-        newNode->prev = temp;
+        newNode->next = temp->next; //this shows that the next pointer which the new node is pointing to will be the name as the next pointer that temp is pointing to
+        newNode->prev = temp; //this is similar to the line above, but this time, the previous node from new node will have the name address as the temp
 
-        if (temp->next)
-            temp->next->prev = newNode;
+        if (temp->next) //if there is no more nodes after temp
+            temp->next->prev = newNode; // this points pack the next node to the previous node and assigns it to newNode
         else
-            tail = newNode;
+            tail = newNode; //if not, you update the tail
 
-        temp->next = newNode;
+        temp->next = newNode; // and here, the new node gets assigned to temp's next
     }
-
+//this function will be used to delete values 
     void delete_val(int value) {
-        if (!head) return;
+        if (!head) return; //if the start is empty
 
-        Node* temp = head;
+        Node* temp = head; 
         while (temp && temp->data != value)
             temp = temp->next;
 
@@ -81,7 +81,7 @@ public: //this function can be called upon outside of this class
 
         delete temp;
     }
-
+//this
     void delete_pos(int pos) {
         if (!head) {
             cout << "List is empty." << endl;

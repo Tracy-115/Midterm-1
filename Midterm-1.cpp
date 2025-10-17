@@ -121,7 +121,7 @@ public: //this function can be called upon outside of this class, any function i
 //this function is going to be used to insert values to the end
     void push_back(int v) {
         Node* newNode = new Node(v);
-        if (!tail)
+        if (!tail) //to check if it's the only node
             head = tail = newNode;
         else {
             tail->next = newNode;
@@ -216,11 +216,12 @@ public: //this function can be called upon outside of this class, any function i
             return; //if current is empty, this will be the output, this is the name as the codes from above
         }
         while (current) {
-        if () {
-            head = head->next->next;
+            cout << current->data << " "; //the data here is what we have in our private
+        if (current->next && current->next->next) { //if there is a next node and if there is a node after that, we can jump once if not, the code will end here because there is nothing else to jump to
+            current = current->next->next;// this is my "skip"
         } 
         else{
-            return;
+            return; //if we reached the end, we exit 
         }
         }
     }
@@ -228,16 +229,18 @@ public: //this function can be called upon outside of this class, any function i
 
         
 int main() {
-    cout << MIN_NR + MIN_LS + MAX_NR + MAX_LS; // dummy statement to avoid compiler warning
+    cout << MIN_NR + MIN_LS + MAX_NR + MAX_LS << endl; // dummy statement to avoid compiler warning, and I added an endl so that the code looks clean
     DoublyLinkedList numbers;
-    
+    //these are my demos
     numbers.push_back(4);
     numbers.push_back(5);
     numbers.push_back(6);
     numbers.push_back(7);
     numbers.push_back(8);
     numbers.push_back(9);
-
+    cout << "My Numbers: ";
+    numbers.print();
+    cout << endl;
     numbers.every_other_element();
     return 0;
 }

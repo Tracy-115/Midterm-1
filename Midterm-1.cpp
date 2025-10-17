@@ -64,7 +64,7 @@ public: //this function can be called upon outside of this class, any function i
         if (!head) return; //if the start is empty
 
         Node* temp = head; 
-        while (temp && temp->data != value)
+        while (temp && temp->data != value) 
             temp = temp->next;
 
         if (!temp) return;
@@ -209,8 +209,24 @@ public: //this function can be called upon outside of this class, any function i
         cout << endl;
     }
 };
-
+    void every_other_element(){
+        node* current = head; //this makes current point to the head or aka the start 
+        if (!current) {
+            cout << "List is empty." << endl;
+            return; //if current is empty, this will be the output, this is the name as the codes from above
+        }
+        while (current) {
+        if (head->next) {
+            head = head->next/>next;
+        } 
+        else{
+            return;
+        }
+        }
+    }
+        
 int main() {
     cout << MIN_NR + MIN_LS + MAX_NR + MAX_LS; // dummy statement to avoid compiler warning
+    doubly
     return 0;
 }

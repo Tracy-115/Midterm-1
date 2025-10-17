@@ -64,22 +64,23 @@ public: //this function can be called upon outside of this class, any function i
         if (!head) return; //if the start is empty
 
         Node* temp = head; 
-        while (temp && temp->data != value) 
+        while (temp && temp->data != value) //a while loop is used here to repeat until it is at the end
             temp = temp->next;
 
-        if (!temp) return;
+        if (!temp) return; //if temp is empty, you return
 
         if (temp->prev)
-            temp->prev->next = temp->next;
+            temp->prev->next = temp->next; //this is used to skip the previous nodes which is also similar to how i coded my function below
         else
-            head = temp->next;
+            head = temp->next; //if not, the head is moved to the next node
 
         if (temp->next)
-            temp->next->prev = temp->prev;
+            temp->next->prev = temp->prev; //again here, this is used for skipping, the only difference between the first skip and this skip is that the first one skips the previous node and this one skips the next node
+            //by skipping, you are also deleting 
         else
             tail = temp->prev;
 
-        delete temp;
+        delete temp; //again here, this cleans out the memory
     }
 //this will be used to delte positions, and the parameter is going to be the position
     void delete_pos(int pos) {
@@ -208,25 +209,35 @@ public: //this function can be called upon outside of this class, any function i
         }
         cout << endl;
     }
-};
     void every_other_element(){
-        node* current = head; //this makes current point to the head or aka the start 
+        Node* current = head; //this makes current point to the head or aka the start 
         if (!current) {
             cout << "List is empty." << endl;
             return; //if current is empty, this will be the output, this is the name as the codes from above
         }
         while (current) {
-        if (head->next) {
-            head = head->next/>next;
+        if () {
+            head = head->next->next;
         } 
         else{
             return;
         }
         }
     }
+};
+
         
 int main() {
     cout << MIN_NR + MIN_LS + MAX_NR + MAX_LS; // dummy statement to avoid compiler warning
-    doubly
+    DoublyLinkedList numbers;
+    
+    numbers.push_back(4);
+    numbers.push_back(5);
+    numbers.push_back(6);
+    numbers.push_back(7);
+    numbers.push_back(8);
+    numbers.push_back(9);
+
+    numbers.every_other_element();
     return 0;
 }

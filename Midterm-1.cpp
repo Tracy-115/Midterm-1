@@ -19,7 +19,7 @@ private: //this is a function defined only for this class
     Node* head;
     Node* tail;
 
-public: //this function can be called upon outside of this class 
+public: //this function can be called upon outside of this class, any function in here can be called from the main function
     DoublyLinkedList() { //this here again is a constructor 
         //assigning head and tail to nullptr means they they are empty
         head = nullptr;
@@ -81,7 +81,7 @@ public: //this function can be called upon outside of this class
 
         delete temp;
     }
-//this
+//this will be used to delte positions, and the parameter is going to be the position
     void delete_pos(int pos) {
         if (!head) {
             cout << "List is empty." << endl;
@@ -117,7 +117,7 @@ public: //this function can be called upon outside of this class
         temp->next->prev = tempPrev;
         delete temp;
     }
-
+//this function is going to be used to insert values to the end
     void push_back(int v) {
         Node* newNode = new Node(v);
         if (!tail)
@@ -128,7 +128,7 @@ public: //this function can be called upon outside of this class
             tail = newNode;
         }
     }
-
+//here, this function is used to insert values to the front, the push_back and push_front performs similarly but the difference tis that one inserts to the head as shown in the if-else statements
     void push_front(int v) {
         Node* newNode = new Node(v);
         if (!head)
@@ -139,7 +139,7 @@ public: //this function can be called upon outside of this class
             head = newNode;
         }
     }
-
+//this pop_front is used to remove the first value
     void pop_front() {
         if (!head) {
             cout << "List is empty." << endl;
@@ -155,7 +155,8 @@ public: //this function can be called upon outside of this class
 
         delete temp;
     }
-
+//again, pop_back is used to remove the last value, here again, this acts similarly with pop_front, but the only part is that the loops check is the front (head), and back (tails) are empty. 
+//in both of these functions, we can see that memories are deleted at the end to clean up the node
     void pop_back() {
         if (!tail) {
             cout << "List is empty." << endl;
@@ -171,7 +172,7 @@ public: //this function can be called upon outside of this class
 
         delete temp;
     }
-
+//this here is a destructor, just like how we have to delete nodes after using them, we have to clean up the object once we finish using it 
     ~DoublyLinkedList() {
         while (head) {
             Node* temp = head;
@@ -179,7 +180,7 @@ public: //this function can be called upon outside of this class
             delete temp;
         }
     }
-
+//just like the name, this function is to print the values 
     void print() {
         Node* current = head;
         if (!current) {
@@ -193,17 +194,17 @@ public: //this function can be called upon outside of this class
         }
         cout << endl;
     }
-
+//if this function is called upon, the values will be printed in reverse
     void print_reverse() {
         Node* current = tail;
         if (!current) {
             cout << "List is empty." << endl;
-            return;
+            return; //if current is empty, this will be the output
         }
 
-        while (current) {
+        while (current) { //if not, the values will be printed out in reverse
             cout << current->data << " ";
-            current = current->prev;
+            current = current->prev; //this is what makes the data to be printed in reverse because current is pointed backwards
         }
         cout << endl;
     }
